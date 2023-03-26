@@ -1,13 +1,17 @@
 import React from 'react';
 
 const SingleData = (props) => {
-    console.log(props.singleData);
-    const { image, features, name, published_in } = props.singleData;
+
+    // console.log(props);
+
+    const { id, image, features, name, published_in } = props.singleData;
+
+
     // console.log(image);
     return (
         <>
             <div className="card w-full h-full glass text-black rounded-2xl shadow-2xl border-2 bg-secondary">
-                <figure><img className='w-full h-full' src={image} alt="car!" /></figure>
+                <figure><img className='w-full h-full' src={image} alt="Not Found This Image In Api !!! You Should Not Worry About This Card. Its in Correct Position. You Should See The Bellow Componnet Of This Card !!" /></figure>
                 <div className="card-body m-0 ">
                     <h2 className="card-title font-bold">Features</h2>
 
@@ -30,7 +34,7 @@ const SingleData = (props) => {
                                 <span className='ml-2'>{published_in}</span>
                             </div>
                         </div>
-                        <label htmlFor="my-modal" className="btn btn-accent mt-2">
+                        <label onClick={() => props.setUniqueId(id)} htmlFor="my-modal" className="btn btn-accent mt-2">
 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
@@ -39,21 +43,10 @@ const SingleData = (props) => {
                     </div>
                 </div>
             </div>
-            {/* The button to open modal */}
-            {/* <label htmlFor="my-modal" className="btn">open modal</label> */}
-            {/* <a href="#my-modal-2" className="btn">open modal</a> */}
 
-            {/* Put this part before </body> tag */}
-            <input type="checkbox" id="my-modal" className="modal-toggle" />
-            <div className="modal">
-                <div className="modal-box border-2 border-warning p-4 rounded-2xl shadow-lg">
-                    <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                    <div className="modal-action">
-                        <label htmlFor="my-modal" className="btn">Yay!</label>
-                    </div>
-                </div>
-            </div>
+
+
+
         </>
     );
 };

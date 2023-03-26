@@ -4,10 +4,22 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 import Button from './components/NextComponents/Button'
+import Modal from './components/NextComponents/Modal'
 import SingleData from './components/NextComponents/SingleData'
 
 function App() {
   const [load, setLoad] = useState([])
+  const [seeMore, setSeeMore] = useState(false);
+  const [uniqueId, setUniqueId] = useState(null);
+  const [modalData, setModalData] = useState({})
+  // console.log(modalData);
+  // console.log(uniqueId);
+  ///This is for show-all button
+  const handleButton = () => {
+    setSeeMore(true);
+  }
+
+  //This is useEffect for CARD data
   useEffect(() => {
 
     const DataLoad = async () => {
@@ -26,6 +38,16 @@ function App() {
 
   }, [])
 
+  //This useEffect for Modal data load
+
+  useEffect(() => {
+    const url2 = ` https://openapi.programming-hero.com/api/ai/tool/${uniqueId}`
+    fetch(url2)
+      .then(res => res.json())
+      .then(item => setModalData(item.data))
+  }, [uniqueId])
+
+
   // console.log(load);
   return (
     <>
@@ -34,10 +56,17 @@ function App() {
       <Button>Sort-By-Date</Button>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-5'>  {
-        load.map(singleData => <SingleData key={singleData.id} singleData={singleData}></SingleData>)
+        load.slice(0, seeMore ? 12 : 6).map(singleData => <SingleData singleData={singleData} setUniqueId={setUniqueId} key={singleData.id}></SingleData>)
       }
       </div>
-      <Button>Show-All</Button>
+      {
+        !seeMore &&
+        <span onClick={handleButton}>
+          <Button>Show-All</Button>
+        </span>
+      }
+      <Modal modalData={modalData} />
+
 
     </>
   )
