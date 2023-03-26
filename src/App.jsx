@@ -29,15 +29,16 @@ function App() {
   // console.log(load);
   return (
     <>
-      <div>
-        <h1 className='text-4xl font-bold my-4 text-accent'>Ai_Hub_React</h1>
-        <Button>Sort-By-Date</Button>
 
-        {
-          load.map(singleData => <SingleData key={singleData.id} singleData={singleData}></SingleData>)
-        }
+      <h1 className='text-4xl font-bold my-4 text-black'>Ai_Hub_React</h1>
+      <Button>Sort-By-Date</Button>
 
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-5'>  {
+        load.map(singleData => <SingleData key={singleData.id} singleData={singleData}></SingleData>)
+      }
       </div>
+      <Button>Show-All</Button>
+
     </>
   )
 }

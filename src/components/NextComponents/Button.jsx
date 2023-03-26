@@ -4,7 +4,8 @@ const Button = ({ children }) => {
     // console.log(children);
     return (
         <div>
-            <button className="btn btn-outline btn-accent my-4">{children}</button>
+            <button className="btn btn-outline btn-warning my-4">{children}</button>
+
         </div>
     );
 };
