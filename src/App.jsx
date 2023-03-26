@@ -1,22 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+
 import './App.css'
 import ApiLoad from './components/NextComponents/ApiLoad'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [load, setLoad] = useState([])
+  useEffect(() => {
+
+    const DataLoad = async () => {
+      const url = `https://openapi.programming-hero.com/api/ai/tools`
+      const res = await fetch(url);
+      const value = await res.json();
+      console.log(value.data.tools);
+      setLoad(value);
+    }
+    DataLoad();
+
+  }, [])
+
 
   return (
-    <div className="App">
-      <button className="btn">Button</button>
-      <button className="btn btn-primary">Button</button>
-      <button className="btn btn-secondary">Button</button>
-      <button className="btn btn-accent">Button</button>
-      <button className="btn btn-ghost">Button</button>
-      <button className="btn btn-link">Button</button>
-      <ApiLoad />
-    </div>
+    <>
+      <div>
+        <h1 className='text-4xl font-bold my-4'>Ai_Hub_React</h1>
+      </div>
+    </>
   )
 }
 

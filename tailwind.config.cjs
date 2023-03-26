@@ -5,7 +5,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   daisyui: {
-    themes: [
+    themes: ["night", "light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "coffee",
       {
         mytheme: {
 
@@ -28,6 +28,8 @@ module.exports = {
           "error": "#FB7085",
         },
       },
+      // "dark",
+      "cupcake",
     ],
   },
   plugins: [require("daisyui")],
