@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Button = () => {
+const Button = ({ children }) => {
+    // console.log(children);
     return (
         <div>
-            <button className="btn btn-warning">Warning</button>
+            <button className="btn btn-outline btn-accent my-4">{children}</button>
         </div>
     );
 };
